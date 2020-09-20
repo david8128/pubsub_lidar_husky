@@ -34,9 +34,12 @@ class LIDAR_RYCSV:
         
         new_msgLaserScan = lidar_scan
         new_msgRanges    = lidar_scan.ranges.copy()
-
+        
+        for rango in new_msgRanges:
         #new_msgLaserScan.ranges > 10 m   == 0
         #new_msgLaserScan.ranges < 0.5 m  == 0
+            if(rango>10 or rango<0.5):
+                rango=0
 
         new_msgLaserScan.ranges = new_msgRanges
         self.newMsg = new_msgLaserScan
